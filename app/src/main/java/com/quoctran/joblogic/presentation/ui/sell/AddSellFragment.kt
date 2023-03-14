@@ -9,25 +9,20 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.quoctran.joblogic.databinding.FragmentSellBinding
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.HiltAndroidApp
 
 /**
  * A fragment representing a list of Items.
  */
 @AndroidEntryPoint
-class SellFragment : Fragment() {
+class AddSellFragment : Fragment() {
 
     private val viewModel by viewModels<SellViewModel>()
     private lateinit var binding : FragmentSellBinding
-    private val sellAdapter = SellAdapter()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding.rvSell.apply {
-            layoutManager =LinearLayoutManager(context)
-            adapter = sellAdapter
-        }
+        binding = FragmentSellBinding.inflate(inflater, container, false)
         return binding.root
     }
 

@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.quoctran.joblogic.R
+import com.quoctran.joblogic.databinding.FragmentCallBinding
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.lifecycle.HiltViewModel
 
@@ -19,20 +20,17 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 class CallFragment : Fragment() {
     private val callAdapter = CallAdapter()
     private val viewModel by viewModels<CallViewModel>()
+    private lateinit var binding: FragmentCallBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val view = inflater.inflate(R.layout.fragment_call, container, false)
-
-        // Set the adapter
-        if (view is RecyclerView) {
-            with(view) {
-                layoutManager = LinearLayoutManager(context)
-                adapter = callAdapter
-            }
+    ): View {
+        binding = FragmentCallBinding.inflate(inflater, container, false)
+        binding.rvCall.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = callAdapter
         }
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

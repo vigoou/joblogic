@@ -38,6 +38,6 @@
   <fragment
       android:id="@+id/sellFragment"
       android:label="sell fragment"
-      android:name="com.quoctran.joblogic.presentation.ui.sell.SellFragment"
+      android:name="com.quoctran.joblogic.presentation.ui.sell.AddSellFragment"
       tools:layout="@layout/fragment_sell" />
 </navigation>
