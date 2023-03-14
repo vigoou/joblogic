@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:id="@+id/nav_graph"
+  app:startDestination="@id/mainFragment">
+  <fragment
+    android:id="@+id/mainFragment"
+    android:label="main fragment"
+    android:name="com.quoctran.joblogic.presentation.ui.main.MainFragment"
+    tools:layout="@layout/fragment_main">
+    <action
+      android:id="@+id/action_mainFragment_to_buyFragment"
+        app:destination="@id/buyFragment" >
+      <argument
+          android:name="type"
+          app:argType="integer"
+          android:defaultValue="1"/>
+    </action>
+
+    <action
+        android:id="@+id/action_mainFragment_to_callFragment"
+        app:destination="@id/callFragment" />
+  </fragment>
+
+  <fragment
+    android:id="@+id/buyFragment"
+    android:label="sell fragment"
+    android:name="com.quoctran.joblogic.presentation.ui.buy.BuyFragment"
+    tools:layout="@layout/fragment_buy" />
+
+  <fragment
+      android:id="@+id/callFragment"
+      android:label="call fragment"
+      android:name="com.quoctran.joblogic.presentation.ui.call.CallFragment"
+      tools:layout="@layout/fragment_call" />
+
+  <fragment
+      android:id="@+id/sellFragment"
+      android:label="sell fragment"
+      android:name="com.quoctran.joblogic.presentation.ui.sell.SellFragment"
+      tools:layout="@layout/fragment_sell" />
+</navigation>
