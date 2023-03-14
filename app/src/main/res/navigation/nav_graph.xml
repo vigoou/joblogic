@@ -11,33 +11,41 @@
     tools:layout="@layout/fragment_main">
     <action
       android:id="@+id/action_mainFragment_to_buyFragment"
-        app:destination="@id/buyFragment" >
+      app:destination="@id/buyFragment">
       <argument
-          android:name="type"
-          app:argType="integer"
-          android:defaultValue="1"/>
+        android:defaultValue="1"
+        android:name="type"
+        app:argType="integer" />
     </action>
 
     <action
-        android:id="@+id/action_mainFragment_to_callFragment"
-        app:destination="@id/callFragment" />
+      android:id="@+id/action_mainFragment_to_callFragment"
+      app:destination="@id/callFragment" />
   </fragment>
 
   <fragment
     android:id="@+id/buyFragment"
     android:label="sell fragment"
     android:name="com.quoctran.joblogic.presentation.ui.buy.BuyFragment"
-    tools:layout="@layout/fragment_buy" />
+    tools:layout="@layout/fragment_buy">
+    <action
+      android:id="@+id/action_buyFragment_to_sellFragment"
+      app:destination="@id/sellFragment" />
+  </fragment>
 
   <fragment
-      android:id="@+id/callFragment"
-      android:label="call fragment"
-      android:name="com.quoctran.joblogic.presentation.ui.call.CallFragment"
-      tools:layout="@layout/fragment_call" />
+    android:id="@+id/callFragment"
+    android:label="call fragment"
+    android:name="com.quoctran.joblogic.presentation.ui.call.CallFragment"
+    tools:layout="@layout/fragment_call" />
 
   <fragment
-      android:id="@+id/sellFragment"
-      android:label="sell fragment"
-      android:name="com.quoctran.joblogic.presentation.ui.sell.AddSellFragment"
-      tools:layout="@layout/fragment_sell" />
+    android:id="@+id/sellFragment"
+    android:label="sell fragment"
+    android:name="com.quoctran.joblogic.presentation.ui.addsell.AddSellFragment"
+    tools:layout="@layout/fragment_sell">
+    <action
+      android:id="@+id/action_sellFragment_to_buyFragment"
+      app:destination="@id/buyFragment" />
+  </fragment>
 </navigation>

@@ -17,7 +17,7 @@ class BuyViewModel @Inject constructor(private val getListProductUseCase: GetLis
     var listProductLiveData: LiveData<List<ProductUI>> = _productList
     fun getListProduct(isLocal: Boolean){
         viewModelScope.launch {
-            val listProduct =  ProductUI.mapFromDomainToUI(getListProductUseCase.getListProduct(isLocal))
+            val listProduct =  ProductUI.mapFromDomain(getListProductUseCase.getListProduct(isLocal))
             _productList.value = listProduct
         }
     }

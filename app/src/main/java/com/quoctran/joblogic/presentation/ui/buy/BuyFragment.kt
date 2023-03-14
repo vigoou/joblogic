@@ -9,8 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import com.quoctran.joblogic.R
 import com.quoctran.joblogic.databinding.FragmentBuyBinding
 import com.quoctran.joblogic.databinding.FragmentSellBinding
+import com.quoctran.joblogic.presentation.core.Navigation
 import dagger.hilt.android.AndroidEntryPoint
 
 /**
@@ -44,7 +46,10 @@ class BuyFragment : Fragment() {
             binding.fabAdd.visibility = View.VISIBLE
         } else {
             binding.fabAdd.visibility = View.GONE
+        }
 
+        binding.fabAdd.setOnClickListener{
+            Navigation.navigationTo(R.id.action_buyFragment_to_sellFragment)
         }
     }
 
