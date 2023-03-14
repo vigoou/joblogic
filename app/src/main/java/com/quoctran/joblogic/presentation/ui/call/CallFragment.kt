@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.quoctran.joblogic.R
 import com.quoctran.joblogic.databinding.FragmentCallBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,6 +30,7 @@ class CallFragment : Fragment() {
         binding.rvCall.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = callAdapter
+            addItemDecoration(DividerItemDecoration(this.context,  DividerItemDecoration.VERTICAL))
         }
         return binding.root
     }

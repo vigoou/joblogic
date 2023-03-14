@@ -18,7 +18,7 @@ import javax.inject.Singleton
 object UseCaseModule {
     @Singleton
     @Provides
-    fun provideGetListProductUseCase(productRepository: IProductRepository): GetListProductUseCase{
+    fun provideGetListProductUseCase(productRepository: IProductRepository): GetListProductUseCase {
         return GetListProductUseCase(productRepository)
     }
 

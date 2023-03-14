@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.quoctran.joblogic.domain.base.UseCase
 import com.quoctran.joblogic.domain.usecase.GetListPersonUseCase
 import com.quoctran.joblogic.presentation.model.PersonUI
 import com.quoctran.joblogic.presentation.model.ProductUI
@@ -20,7 +21,9 @@ class CallViewModel @Inject constructor(private val getPersonUseCase: GetListPer
 
     fun getListPerson(){
         viewModelScope.launch {
-            _personList.value = PersonUI.mapFromDomainToUI(getPersonUseCase.getListPerson())
+            getPersonUseCase(UseCase.None()){
+                _personList.postValue(PersonUI.mapFromDomainToUI(it))
+            }
         }
     }
 }

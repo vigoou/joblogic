@@ -6,6 +6,7 @@ import com.quoctran.joblogic.data.db.ProductDao
 import com.quoctran.joblogic.data.db.entity.ProductEntity
 import com.quoctran.joblogic.data.model.ProductResponse
 import com.quoctran.joblogic.data.network.ApiService
+import com.quoctran.joblogic.domain.model.Product
 import com.quoctran.joblogic.domain.repository.IProductRepository
 import javax.inject.Inject
 
@@ -14,15 +15,15 @@ class ProductRepositoryImpl @Inject constructor(
     private val apiService: ApiService
 ) : IProductRepository {
 
-    override suspend fun getProductListLocal(): List<ProductEntity>?{
-        return productDao.getListProduct()
+    override suspend fun getProductListLocal(): List<Product> {
+        return ProductEntity.mapFromLocalToDomain(productDao.getListProduct())
     }
 
-    override suspend fun getProductListRemote(): List< ProductResponse>? {
-        return apiService.getListProduct().body()
+    override suspend fun getProductListRemote(): List<Product> {
+        return ProductResponse.mapFromResponseToDomain(apiService.getListProduct().body())
     }
 
-    override suspend fun addProductLocal(product: ProductEntity) : Long {
-        return productDao.addProduct(product)
+    override suspend fun addProductLocal(product: Product) : Long {
+        return productDao.addProduct(ProductEntity.mapProductToProductEntity(product))
     }
 }

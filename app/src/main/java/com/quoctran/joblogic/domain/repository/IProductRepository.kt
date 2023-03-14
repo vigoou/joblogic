@@ -1,13 +1,10 @@
 package com.quoctran.joblogic.domain.repository
-
-import androidx.paging.PagingSource
-import com.quoctran.joblogic.data.db.entity.ProductEntity
-import com.quoctran.joblogic.data.model.ProductResponse
+import com.quoctran.joblogic.domain.model.Product
 
 interface IProductRepository {
-    suspend fun getProductListLocal() : List<ProductEntity>?
+    suspend fun getProductListLocal() : List<Product>
 
-    suspend fun getProductListRemote() : List<ProductResponse>?
+    suspend fun getProductListRemote() : List<Product>
 
-    suspend fun addProductLocal(product :ProductEntity) : Long
+    suspend fun addProductLocal(product : Product) : Long
 }

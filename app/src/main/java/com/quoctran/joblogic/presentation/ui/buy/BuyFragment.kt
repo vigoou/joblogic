@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.quoctran.joblogic.R
 import com.quoctran.joblogic.databinding.FragmentBuyBinding
 import com.quoctran.joblogic.databinding.FragmentSellBinding
@@ -32,6 +33,7 @@ class BuyFragment : Fragment() {
         binding.rvBuy.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = buyAdapter
+            addItemDecoration(DividerItemDecoration(this.context,  DividerItemDecoration.VERTICAL))
         }
         return binding.root
     }

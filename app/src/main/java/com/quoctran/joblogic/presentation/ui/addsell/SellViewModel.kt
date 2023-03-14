@@ -7,8 +7,6 @@ import androidx.lifecycle.viewModelScope
 import com.quoctran.joblogic.domain.usecase.AddProductToLocalUseCase
 import com.quoctran.joblogic.presentation.model.ProductUI
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -17,9 +15,10 @@ class SellViewModel @Inject constructor(private val addProductToLocalUseCase: Ad
     private var _productId = MutableLiveData(-1L)
     var productILiveData: LiveData<Long> = _productId
     fun addProductToLocal(productUI: ProductUI){
-        CoroutineScope(Dispatchers.IO).launch {
-            val id = addProductToLocalUseCase.addProduct(ProductUI.mapToDomain(productUI))
-            _productId.postValue(id)
+        viewModelScope.launch {
+            addProductToLocalUseCase(AddProductToLocalUseCase.Params(ProductUI.mapToDomain(productUI))){
+                _productId.postValue(it)
+            }
         }
     }
 }

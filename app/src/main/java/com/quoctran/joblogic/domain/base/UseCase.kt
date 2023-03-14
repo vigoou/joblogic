@@ -4,14 +4,13 @@ import kotlinx.coroutines.*
 
 abstract class UseCase<out Type, in Params> where Type : Any {
 
-    abstract suspend fun run(params: Params): Either<Failure, Type>
+    abstract suspend fun run(params: Params): Type
 
-    operator fun invoke(
+    suspend operator fun invoke(
         params: Params,
-        scope: CoroutineScope = GlobalScope,
-        onResult: (Either<Failure, Type>) -> Unit = {}
+        onResult: ( Type) -> Unit = {}
     ) {
-        scope.launch(Dispatchers.Main) {
+        withContext(Dispatchers.IO){
             val deferred = async(Dispatchers.IO) {
                 run(params)
             }
